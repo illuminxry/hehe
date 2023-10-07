@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Subject List</title>
+    </head>
+
+    <body>
+        <a href="/subject">Insert Subject</a>
+        <br><br>
+        <a href="/subjectlist">View Subject List</a>
+        <br><br>
+        <h1>Subject List</h1>
+        <ul>
+            <% subjects.forEach(subject=> { %>
+                <li>
+                    <%= subject.subjectname %>
+                </li>
+                <% }); %>
+        </ul>
+    </body>
+
+</html>

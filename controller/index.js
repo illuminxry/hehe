@@ -8,7 +8,7 @@ exports.getIndex = (req, res) => {
         password: ''
     });
 
-    const sql = 'SELECT * FROM subject ORDER BY subjectid ASC'; // Updated SQL query with ORDER BY
+    const sql = 'SELECT * FROM subject'; // Updated SQL query with ORDER BY
 
     conn.connect((err) => {
         if (err) {

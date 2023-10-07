@@ -1,0 +1,63 @@
+<h1>Create lesson</h1>
+
+<form action="/create-lesson" method="post">
+    <label for="lessonid">Lesson ID</label>
+    <input type="text" name="lessonid" id="lessonid">
+    <br>
+    <label for="subject">Choose a subject:</label>
+        <select name="subjectname" id="subjectname">
+            <% subjectNames.forEach(function(subjectname) { %>
+                <option value="<%= subjectname %>"><%= subjectname %></option>
+            <% }); %>
+        </select>
+    <br>
+    <label for="quarter">Select Quarter Period:</label>
+<select name="quarterID" id="quarterID">
+    <% quarterID.forEach(function(quarterID) { %>
+        <option value="<%= quarterID %>"><%= quarterID %></option>
+    <% }); %>
+</select>
+
+    <br>
+    <label for="section1">Section 1</label>
+    <input type="text" name="section1" id="section1">
+    <br>
+
+    <label for="section2">Section 2</label>
+    <input type="text" name="section2" id="section2">
+    <br>
+
+    <label for="section3">Section 3</label>
+    <input type="text" name="section3" id="section3">
+    <br>
+
+    <label for="section4">Section 4</label>
+    <input type="text" name="section4" id="section4">
+    <br>
+
+    <label for="section5">Section 5</label>
+    <input type="text" name="section5" id="section5">
+    <br>
+
+    <label for="section6">Section 6</label>
+    <input type="text" name="section6" id="section6">
+    <br>
+
+    <label for="section7">Section 7</label>
+    <input type="text" name="section7" id="section7">
+    <br>
+
+    <label for="section8">Section 8</label>
+    <input type="text" name="section8" id="section8">
+    <br>
+
+    <label for="section9">Section 9</label>
+    <input type="text" name="section9" id="section9">
+    <br>
+
+    <label for="section10">Section 10</label>
+    <input type="text" name="section10" id="section10">
+    <br>
+
+    <input type="submit" value="Submit">
+</form>

@@ -8,6 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var subjectRouter = require('./routes/subject')
 var subjectListRouter = require('./routes/subjectlist')
+var lessonRouter = require('./routes/lesson')
 
 var app = express();
 const port = 3000;
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/', subjectRouter);
 app.use('/', subjectListRouter);
+app.use('/', lessonRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

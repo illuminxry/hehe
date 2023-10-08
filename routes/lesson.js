@@ -4,6 +4,6 @@ const lessonController = require('../controller/lesson'); // Import the controll
 
 /* GET home page. */
 router.get('/lesson', lessonController.getLesson); // Use the controller for the route
-router.get('/create-lesson', lessonController.postLesson);
+router.post('/lesson', lessonController.createLesson);
 
 module.exports = router;

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sections</title>
+</head>
+<body>
+    <h1>Sections</h1>
+    
+    <ul>
+        <% sectionNames.forEach(function(sectionName) { %>
+            <li><%= sectionName %></li>
+        <% }); %>
+    </ul>
+
+    <!-- Your form for adding new sections goes here -->
+    <form action="/create-section" method="post">
+        <label for="sectionname">Insert section</label><br>
+        <input type="text" name="sectionname" id="sectionname" placeholder="ex: 8-D St. Ezekiel Moreno">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

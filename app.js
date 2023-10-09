@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var subjectRouter = require('./routes/subject')
 var subjectListRouter = require('./routes/subjectlist')
 var lessonRouter = require('./routes/lesson')
+var sectionRouter = require('./routes/section')
 
 var app = express();
 const port = 3000;
@@ -27,6 +28,7 @@ app.use('/', indexRouter);
 app.use('/', subjectRouter);
 app.use('/', subjectListRouter);
 app.use('/', lessonRouter);
+app.use('/', sectionRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

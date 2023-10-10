@@ -1,2 +1,3 @@
 # hehe
-meron na crud for section
+meron na crud for section, kindly check section controller
+

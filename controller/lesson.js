@@ -97,27 +97,15 @@ exports.createLesson = (req, res) => {
 };
 
 
-exports.editLessonForm = (req, res) => {
-    const { id } = req.params;
-
-    Lesson.findById(id, (err, lesson) => {
-        if (err) {
-            console.error('Error finding lesson:', err);
-            res.status(500).send('Internal Server Error');
-        } else {
-            res.render('edit-lesson', { lesson });
-        }
-    });
-};
 
 exports.viewLesson = (req, res) => {
     const { id } = req.params;
 
     const connection = mysql.createConnection(conn);
 
-    // SQL query to fetch a single lesson by ID
+    // SQL query to fetch both id and lessonID for a single lesson by ID
     const sql = `
-      SELECT lessonID, subjectname, quarterID, section1, section2, section3, section4, section5, section6, section7, section8, section9, section10, dateCreated, dateAvailableUntil, published
+      SELECT ID, lessonID, subjectname, quarterID, section1, section2, section3, section4, section5, section6, section7, section8, section9, section10, dateCreated, dateAvailableUntil, published
       FROM lesson
       WHERE ID = ?
     `;
@@ -134,7 +122,76 @@ exports.viewLesson = (req, res) => {
         if (!lesson || lesson.length === 0) {
             res.status(404).send('Lesson not found');
         } else {
-            res.render('view-lesson', { lesson: lesson[0] }); // Assuming you have a "view-lesson" EJS template
+            // Pass both id and lesson details to a view template for rendering
+            res.render('view-lesson', { id, lesson: lesson[0] });
         }
     });
+};
+
+// lessonController.js
+
+exports.editLesson = (req, res) => {
+    const { id } = req.id;
+    const updatedLessonData = req.body;
+
+    const connection = mysql.createConnection(conn);
+
+    // SQL query to update the lesson data based on lessonID
+    const updateSql = `
+      UPDATE lesson
+      SET
+        lessonID = ?,
+        subjectname = ?,
+        quarterID = ?,
+        section1 = ?,
+        section2 = ?,
+        section3 = ?,
+        section4 = ?,
+        section5 = ?,
+        section6 = ?,
+        section7 = ?,
+        section8 = ?,
+        section9 = ?,
+        section10 = ?,
+        dateCreated = ?,
+        dateAvailableUntil = ?,
+        published = ?
+      WHERE ID = ?
+    `;
+
+    connection.query(
+        updateSql,
+        [
+            updatedLessonData.lessonID,
+            updatedLessonData.subjectname,
+            updatedLessonData.quarterID,
+            updatedLessonData.section1,
+            updatedLessonData.section2,
+            updatedLessonData.section3,
+            updatedLessonData.section4,
+            updatedLessonData.section5,
+            updatedLessonData.section6,
+            updatedLessonData.section7,
+            updatedLessonData.section8,
+            updatedLessonData.section9,
+            updatedLessonData.section10,
+            updatedLessonData.dateCreated,
+            updatedLessonData.dateAvailableUntil,
+            updatedLessonData.published,
+            id // Use the id from the URL parameter
+        ],
+        (err, result) => {
+            connection.end();
+
+            if (err) {
+                console.error('Error updating lesson:', err);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
+
+            console.log('Lesson updated successfully');
+            // Redirect to the lesson details page or any other appropriate page
+            res.redirect('/lesson/view/' + id); // Assuming a view page URL
+        }
+    );
 };

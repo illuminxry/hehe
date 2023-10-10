@@ -1,6 +1,6 @@
 <!-- views/view-lesson.ejs -->
 <a href="/">Go Home</a>
-<h2>Lesson Details</h2>
+<!-- <h2>Lesson Details</h2>
 <table border="1">
     <tr>
         <th>Lesson ID</th>
@@ -38,4 +38,94 @@
         <td><%= lesson.dateAvailableUntil %></td>
         <td><%= lesson.published %></td>
     </tr>
-</table>
+</table> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit Lesson</title>
+    </head>
+
+    <body>
+        <h2>Edit Lesson</h2>
+        <form action="/lesson/edit/<%=id %>" method="post">
+            <p name="id" id="id">ID: <%= id %></p> 
+
+            <label for="lessonID">Lesson ID:</label>
+            <input type="text" name="lessonID" id="lessonID" value="<%= lesson.lessonID %>">
+            <br>
+
+            <label for="subjectname">Subject Name:</label>
+            <input type="text" name="subjectname" id="subjectname" value="<%= lesson.subjectname %>">
+            <br>
+
+            <label for="quarterID">Quarter ID:</label>
+            <input type="text" name="quarterID" id="quarterID" value="<%= lesson.quarterID %>">
+            <br>
+
+            <!-- Add input fields for other lesson details here -->
+            <label for="section1">Section 1:</label>
+            <input type="text" name="section1" id="section1" value="<%= lesson.section1 %>">
+            <br>
+
+            <label for="section2">Section 2:</label>
+            <input type="text" name="section2" id="section2" value="<%= lesson.section2 %>">
+            <br>
+
+            <label for="section3">Section 3:</label>
+            <input type="text" name="section3" id="section3" value="<%= lesson.section3 %>">
+            <br>
+
+            <label for="section4">Section 4:</label>
+            <input type="text" name="section4" id="section4" value="<%= lesson.section4 %>">
+            <br>
+
+            <label for="section5">Section 5:</label>
+            <input type="text" name="section5" id="section5" value="<%= lesson.section5 %>">
+            <br>
+
+            <label for="section6">Section 6:</label>
+            <input type="text" name="section6" id="section6" value="<%= lesson.section6 %>">
+            <br>
+
+            <label for="section7">Section 7:</label>
+            <input type="text" name="section7" id="section7" value="<%= lesson.section7 %>">
+            <br>
+
+            <label for="section8">Section 8:</label>
+            <input type="text" name="section8" id="section8" value="<%= lesson.section8 %>">
+            <br>
+
+            <label for="section9">Section 9:</label>
+            <input type="text" name="section9" id="section9" value="<%= lesson.section9 %>">
+            <br>
+
+            <label for="section10">Section 10:</label>
+            <input type="text" name="section10" id="section10" value="<%= lesson.section10 %>">
+            <br>
+
+            <!-- Add dateCreated input -->
+            <label for="dateCreated">Date Created:</label>
+            <input type="date" name="dateCreated" id="dateCreated"
+                value="<%= lesson.dateCreated.toISOString().split('T')[0] %>">
+            <br>
+
+            <!-- Add dateAvailableUntil input -->
+            <label for="dateAvailableUntil">Date Available Until:</label>
+            <input type="date" name="dateAvailableUntil" id="dateAvailableUntil"
+                value="<%= lesson.dateAvailableUntil.toISOString().split('T')[0] %>">
+            <br>
+
+
+            <label for="published">Published:</label>
+            <input type="text" name="published" id="published" value="<%= lesson.published %>">
+            <br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+
+</html>

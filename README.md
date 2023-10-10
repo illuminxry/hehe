@@ -1,3 +1,4 @@
 # hehe
-meron na crud for section, kindly check section controller
+
+sira ang update function for section
 

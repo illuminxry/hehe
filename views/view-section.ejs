@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Section</title>
+</head>
+<body>
+    <h1>Edit Section</h1>
+
+    <!-- Display the old section name -->
+    <p>Old Section Name: <%= section.sectionname %></p>
+
+    <!-- Create a form to edit the section name -->
+    <form action="/section/update/<%= section.sectionname %>" method="post">
+        <label for="newSectionname">New Section Name:</label><br>
+        <input type="text" name="newSectionname" id="newSectionname" placeholder="Enter new section name" required>
+        <br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

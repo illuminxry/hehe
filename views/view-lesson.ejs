@@ -1,44 +1,4 @@
-<!-- views/view-lesson.ejs -->
 <a href="/">Go Home</a>
-<!-- <h2>Lesson Details</h2>
-<table border="1">
-    <tr>
-        <th>Lesson ID</th>
-        <th>Subject Name</th>
-        <th>Quarter ID</th>
-        <th>Section 1</th>
-        <th>Section 2</th>
-        <th>Section 3</th>
-        <th>Section 4</th>
-        <th>Section 5</th>
-        <th>Section 6</th>
-        <th>Section 7</th>
-        <th>Section 8</th>
-        <th>Section 9</th>
-        <th>Section 10</th>
-        <th>Date Created</th>
-        <th>Date Available Until</th>
-        <th>Published</th>
-    </tr>
-    <tr>
-        <td><%= lesson.lessonID %></td>
-        <td><%= lesson.subjectname %></td>
-        <td><%= lesson.quarterID %></td>
-        <td><%= lesson.section1 %></td>
-        <td><%= lesson.section2 %></td>
-        <td><%= lesson.section3 %></td>
-        <td><%= lesson.section4 %></td>
-        <td><%= lesson.section5 %></td>
-        <td><%= lesson.section6 %></td>
-        <td><%= lesson.section7 %></td>
-        <td><%= lesson.section8 %></td>
-        <td><%= lesson.section9 %></td>
-        <td><%= lesson.section10 %></td>
-        <td><%= lesson.dateCreated %></td>
-        <td><%= lesson.dateAvailableUntil %></td>
-        <td><%= lesson.published %></td>
-    </tr>
-</table> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,85 +6,83 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit Lesson</title>
+        <title>Viewing Lesson ID: <%= lesson.ID %> </title>
     </head>
 
     <body>
-        <h2>Edit Lesson</h2>
-        <form action="/lesson/edit/<%=id %>" method="post">
+        <h2>View Lesson</h2>
+        <form>
             <p name="id" id="id">ID: <%= id %></p> 
 
             <label for="lessonID">Lesson ID:</label>
-            <input type="text" name="lessonID" id="lessonID" value="<%= lesson.lessonID %>">
+            <input type="text" name="lessonID" id="lessonID" value="<%= lesson.lessonID %>" disabled>
             <br>
 
             <label for="subjectname">Subject Name:</label>
-            <input type="text" name="subjectname" id="subjectname" value="<%= lesson.subjectname %>">
+            <input type="text" name="subjectname" id="subjectname" value="<%= lesson.subjectname %>" disabled>
             <br>
 
             <label for="quarterID">Quarter ID:</label>
-            <input type="text" name="quarterID" id="quarterID" value="<%= lesson.quarterID %>">
+            <input type="text" name="quarterID" id="quarterID" value="<%= lesson.quarterID %>" disabled>
             <br>
 
             <!-- Add input fields for other lesson details here -->
             <label for="section1">Section 1:</label>
-            <input type="text" name="section1" id="section1" value="<%= lesson.section1 %>">
+            <input type="text" name="section1" id="section1" value="<%= lesson.section1 %>" disabled>
             <br>
 
             <label for="section2">Section 2:</label>
-            <input type="text" name="section2" id="section2" value="<%= lesson.section2 %>">
+            <input type="text" name="section2" id="section2" value="<%= lesson.section2 %>" disabled>
             <br>
 
             <label for="section3">Section 3:</label>
-            <input type="text" name="section3" id="section3" value="<%= lesson.section3 %>">
+            <input type="text" name="section3" id="section3" value="<%= lesson.section3 %>" disabled>
             <br>
 
             <label for="section4">Section 4:</label>
-            <input type="text" name="section4" id="section4" value="<%= lesson.section4 %>">
+            <input type="text" name="section4" id="section4" value="<%= lesson.section4 %>" disabled>
             <br>
 
             <label for="section5">Section 5:</label>
-            <input type="text" name="section5" id="section5" value="<%= lesson.section5 %>">
+            <input type="text" name="section5" id="section5" value="<%= lesson.section5 %>" disabled>
             <br>
 
             <label for="section6">Section 6:</label>
-            <input type="text" name="section6" id="section6" value="<%= lesson.section6 %>">
+            <input type="text" name="section6" id="section6" value="<%= lesson.section6 %>" disabled>
             <br>
 
             <label for="section7">Section 7:</label>
-            <input type="text" name="section7" id="section7" value="<%= lesson.section7 %>">
+            <input type="text" name="section7" id="section7" value="<%= lesson.section7 %>" disabled>
             <br>
 
             <label for="section8">Section 8:</label>
-            <input type="text" name="section8" id="section8" value="<%= lesson.section8 %>">
+            <input type="text" name="section8" id="section8" value="<%= lesson.section8 %>" disabled>
             <br>
 
             <label for="section9">Section 9:</label>
-            <input type="text" name="section9" id="section9" value="<%= lesson.section9 %>">
+            <input type="text" name="section9" id="section9" value="<%= lesson.section9 %>" disabled>
             <br>
 
             <label for="section10">Section 10:</label>
-            <input type="text" name="section10" id="section10" value="<%= lesson.section10 %>">
+            <input type="text" name="section10" id="section10" value="<%= lesson.section10 %>" disabled>
             <br>
 
             <!-- Add dateCreated input -->
             <label for="dateCreated">Date Created:</label>
             <input type="date" name="dateCreated" id="dateCreated"
-                value="<%= lesson.dateCreated.toISOString().split('T')[0] %>">
+                value="<%= lesson.dateCreated.toISOString().split('T')[0] %>" disabled>
             <br>
 
             <!-- Add dateAvailableUntil input -->
             <label for="dateAvailableUntil">Date Available Until:</label>
             <input type="date" name="dateAvailableUntil" id="dateAvailableUntil"
-                value="<%= lesson.dateAvailableUntil.toISOString().split('T')[0] %>">
+                value="<%= lesson.dateAvailableUntil.toISOString().split('T')[0] %>" disabled>
             <br>
 
 
             <label for="published">Published:</label>
-            <input type="text" name="published" id="published" value="<%= lesson.published %>">
+            <input type="text" name="published" id="published" value="<%= lesson.published %>" disabled>
             <br>
-
-            <input type="submit" value="Submit">
         </form>
     </body>
 

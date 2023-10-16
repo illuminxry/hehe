@@ -13,13 +13,23 @@
         <a href="/">Go back</a>
         <br><br>
         <h1>Subject List</h1>
-        <ul>
+        <table border="1">
+            <tr>
+                <th>Subject ID</th>
+                <th>Subject Name</th>
+                <th colspan="3">Actions</th>
+            </tr>
             <% subjects.forEach(subject=> { %>
-                <li>
-                    <%= subject.subjectname %>
-                </li>
+                <tr>
+                    <td><%= subject.subjectid %></td>
+                    <td><%= subject.subjectname %></td>
+                    <td><a href="/subject/<%= subject.subjectid %>">View</a></td>
+                    <td><a href="/edit/<%= subject.id %>">Edit</a></td>
+                    <td><a href="/delete/<%= subject.id %>">Delete</a></td>
+                </tr>
                 <% }); %>
-        </ul>
+        </table>
+
     </body>
 
 </html>

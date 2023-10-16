@@ -7,6 +7,9 @@ router.get('/lesson', lessonController.getLesson); // Use the controller for the
 router.post('/lesson', lessonController.createLesson);
 
 router.get('/lesson/view/:id', lessonController.viewLesson);
-// router.post('/lesson/edit/:id', lessonController.editLesson);
+router.get('/lesson/edit/:id', lessonController.getViewForEdit);
 router.post('/lesson/edit/:id', lessonController.editLesson);
+
+router.delete('/lesson/delete/:id', lessonController.deleteLesson);
+
 module.exports = router;

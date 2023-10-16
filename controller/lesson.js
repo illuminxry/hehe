@@ -96,8 +96,6 @@ exports.createLesson = (req, res) => {
     });
 };
 
-
-
 exports.viewLesson = (req, res) => {
     const { id } = req.params;
 
@@ -128,10 +126,38 @@ exports.viewLesson = (req, res) => {
     });
 };
 
-// lessonController.js
+exports.getViewForEdit = (req, res) => {
+    const { id } = req.params;
+
+    const connection = mysql.createConnection(conn);
+
+    // SQL query to fetch both id and lessonID for a single lesson by ID
+    const sql = `
+      SELECT ID, lessonID, subjectname, quarterID, section1, section2, section3, section4, section5, section6, section7, section8, section9, section10, dateCreated, dateAvailableUntil, published
+      FROM lesson
+      WHERE ID = ?
+    `;
+
+    connection.query(sql, [id], (err, lesson) => {
+        if (err) {
+            console.error('Error fetching lesson data:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        connection.end();
+
+        if (!lesson || lesson.length === 0) {
+            res.status(404).send('Lesson not found');
+        } else {
+            // Pass both id and lesson details to a view template for rendering
+            res.render('edit-lesson', { id, lesson: lesson[0] });
+        }
+    });
+};
 
 exports.editLesson = (req, res) => {
-    const { id } = req.id;
+    const { id } = req.params;
     const updatedLessonData = req.body;
 
     const connection = mysql.createConnection(conn);
@@ -194,4 +220,27 @@ exports.editLesson = (req, res) => {
             res.redirect('/lesson/view/' + id); // Assuming a view page URL
         }
     );
+};
+
+exports.deleteLesson = (req, res) => {
+    const { id } = req.params;
+
+    // Implement the SQL query to delete the lesson with the specified ID
+    const deleteSql = 'DELETE FROM lesson WHERE ID = ?';
+
+    const connection = mysql.createConnection(conn);
+
+    connection.query(deleteSql, [id], (err, result) => {
+        connection.end();
+
+        if (err) {
+            console.error('Error deleting lesson:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        console.log('Lesson deleted successfully');
+        // Redirect to a relevant page, e.g., the list of lessons
+        res.redirect('/lesson');
+    });
 };

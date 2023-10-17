@@ -98,12 +98,11 @@
             <td><%= lesson.lessonID %></td>
             <td><%= lesson.subjectname %></td>
             <td><%= lesson.quarterID %></td>
-            <td><a href="/lesson/view/<%= lesson.id %>">View</a></td>
+            <td><a href="/lesson/view-lesson/<%= lesson.id %>">View</a></td>
             <td><a href="/lesson/edit/<%= lesson.id %>">Edit</a></td>
-            <td><form action="lesson/delete/<%= lesson.id %>" method="delete">
+            <td><form action="lesson/delete/<%= lesson.id %>" method="post">
                 <button type="submit">Delete</button>
             </form></td>
-            <!-- <td><a href="/lesson/delete/<%= lesson.id %>">Delete</a></td> -->
             
         </tr>
     <% }); %>

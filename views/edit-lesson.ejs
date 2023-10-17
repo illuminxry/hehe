@@ -10,9 +10,10 @@
     </head>
 
     <body>
-        <h2>Veiw Lesson</h2>
-        <form action="/lesson/edit/<%= lesson.id %>" method="post">
-            <p name="id" id="id">ID: <%= lesson.id %></p> 
+        <h2>View Lesson</h2>
+        <form action="/lesson/edit/<%= lesson.ID %>" method="post">
+            <p name="id" id="id">ID: <%= lesson.ID %></p> 
+            <input type="hidden" name="id" value="<%= lesson.ID %>">
 
             <label for="lessonID">Lesson ID:</label>
             <input type="text" name="lessonID" id="lessonID" value="<%= lesson.lessonID %>">
@@ -23,10 +24,15 @@
             <br>
 
             <label for="quarterID">Quarter ID:</label>
-            <input type="text" name="quarterID" id="quarterID" value="<%= lesson.quarterID %>">
+            <select name="quarterID" id="quarterID">
+                <option value="" disabled selected>Choose an Option</option>
+                <option value="1">1st Quarter</option>
+                <option value="2">2nd Quarter</option>
+                <option value="3">3rd Quarter</option>
+                <option value="4">4th Quarter</option>
+            </select>
             <br>
 
-            <!-- Add input fields for other lesson details here -->
             <label for="section1">Section 1:</label>
             <input type="text" name="section1" id="section1" value="<%= lesson.section1 %>">
             <br>
@@ -79,13 +85,20 @@
                 value="<%= lesson.dateAvailableUntil.toISOString().split('T')[0] %>">
             <br>
 
-
             <label for="published">Published:</label>
-            <input type="text" name="published" id="published" value="<%= lesson.published %>">
-            <br>
+            <select name="published" id="published">
+                <option value="" disabled></option>
+                <option value="Publish">Publish</option>
+                <option value="Unpublish">Unpublish</option>
+            </select>
+           <br>
 
             <input type="submit" value="Submit">
         </form>
     </body>
 
 </html>
+
+<!-- <label for="published">Published:</label>
+<input type="text" name="published" id="published" value="<%= lesson.published %>">
+<br> -->

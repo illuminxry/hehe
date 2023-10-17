@@ -6,10 +6,10 @@ const lessonController = require('../controller/lesson'); // Import the controll
 router.get('/lesson', lessonController.getLesson); // Use the controller for the route
 router.post('/lesson', lessonController.createLesson);
 
-router.get('/lesson/view/:id', lessonController.viewLesson);
+router.get('/lesson/view-lesson/:id', lessonController.viewLesson);
 router.get('/lesson/edit/:id', lessonController.getViewForEdit);
 router.post('/lesson/edit/:id', lessonController.editLesson);
 
-router.delete('/lesson/delete/:id', lessonController.deleteLesson);
+router.post('/lesson/delete/:id', lessonController.deleteLesson);
 
 module.exports = router;

@@ -157,33 +157,32 @@ exports.getViewForEdit = (req, res) => {
 };
 
 exports.editLesson = (req, res) => {
-    const { id } = req.params;
     const updatedLessonData = req.body;
-
+    const id = req.params;
     const connection = mysql.createConnection(conn);
 
     // SQL query to update the lesson data based on lessonID
     const updateSql = `
-      UPDATE lesson
-      SET
-        lessonID = ?,
-        subjectname = ?,
-        quarterID = ?,
-        section1 = ?,
-        section2 = ?,
-        section3 = ?,
-        section4 = ?,
-        section5 = ?,
-        section6 = ?,
-        section7 = ?,
-        section8 = ?,
-        section9 = ?,
-        section10 = ?,
-        dateCreated = ?,
-        dateAvailableUntil = ?,
-        published = ?
-      WHERE ID = ?
-    `;
+  UPDATE lesson
+  SET
+    lessonID = ?,
+    subjectname = ?,
+    quarterID = ?,
+    section1 = ?,
+    section2 = ?,
+    section3 = ?,
+    section4 = ?,
+    section5 = ?,
+    section6 = ?,
+    section7 = ?,
+    section8 = ?,
+    section9 = ?,
+    section10 = ?,
+    dateCreated = ?,
+    dateAvailableUntil = ?,
+    published = ?
+  WHERE ID = ?
+`;
 
     connection.query(
         updateSql,
@@ -217,7 +216,7 @@ exports.editLesson = (req, res) => {
 
             console.log('Lesson updated successfully');
             // Redirect to the lesson details page or any other appropriate page
-            res.redirect('/lesson/view/' + id); // Assuming a view page URL
+            res.redirect('/lesson'); // Assuming a view page URL
         }
     );
 };

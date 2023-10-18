@@ -157,8 +157,8 @@ exports.getViewForEdit = (req, res) => {
 };
 
 exports.editLesson = (req, res) => {
+    const id = req.params.id;
     const updatedLessonData = req.body;
-    const id = req.params;
     const connection = mysql.createConnection(conn);
 
     // SQL query to update the lesson data based on lessonID
@@ -216,13 +216,13 @@ exports.editLesson = (req, res) => {
 
             console.log('Lesson updated successfully');
             // Redirect to the lesson details page or any other appropriate page
-            res.redirect('/lesson'); // Assuming a view page URL
+            res.redirect('/lesson'); // redirect to view lesson page
         }
     );
 };
 
 exports.deleteLesson = (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params.id;
 
     // Implement the SQL query to delete the lesson with the specified ID
     const deleteSql = 'DELETE FROM lesson WHERE ID = ?';
